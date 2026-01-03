@@ -14,7 +14,7 @@ public class LoginTest extends TestBase {
 
 	Logger logger=LoggerUtility.getLogger(this.getClass());
 
-//	
+	
 	
 //	@BeforeMethod(description="load the homepage of the website")
 //	public void setUp() {
