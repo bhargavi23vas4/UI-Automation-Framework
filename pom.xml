@@ -16,6 +16,7 @@
 					<target>17</target>
 				</configuration>
 			</plugin>
+			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
@@ -27,7 +28,7 @@
 					<systemPropertyVariables>
 						<browser>${browser}</browser> <!-- <browser>chrome</browser> //in local ${browser} ->from git-->
 						<isLambdaTest>${isLambdaTest}</isLambdaTest> <!-- <isLambdaTest>false</isLambdaTest> -->
-						<isHeadless>${isHeadless}</isHeadless> <!--<isHeadless>true</isHeadless>  -->
+						<isHeadless>${isHeadless}</isHeadless>  <!--<isHeadless>true</isHeadless>  -->
 					</systemPropertyVariables>
 				</configuration>
 			</plugin>
