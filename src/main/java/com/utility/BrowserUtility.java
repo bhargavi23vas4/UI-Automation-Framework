@@ -83,44 +83,50 @@ public class BrowserUtility {
 	
 	
 	
+	
 	public BrowserUtility(Browser browserName,boolean isHeadless) { 
 		logger.info("Launching Browser for"+browserName);
 		if(browserName==Browser.CHROME) {
 			if(isHeadless) {
-				ChromeOptions options=new ChromeOptions();
-				options.addArguments("--headless");
-				options.addArguments("--Window-size=1920,1080");
-				driver.set(new ChromeDriver(options));
-			}else {
+			ChromeOptions options=new ChromeOptions();
+			options.addArguments("--headless");//headless
+			options.addArguments("--window-size=1920,1080");
+			driver.set(new ChromeDriver(options));
+			}
+			else {
 				driver.set(new ChromeDriver());
 			}
-			
 		}
 		else if(browserName==Browser.EDGE) {
 			if(isHeadless) {
 				EdgeOptions options=new EdgeOptions();
-				options.addArguments("--headless");
+				options.addArguments("--headless");//headless
 				options.addArguments("disable-gpu");
-				driver.set(new EdgeDriver(options));
-			}else {
-			driver.set(new EdgeDriver());
-		}}
+			driver.set(new EdgeDriver(options));
+			}
+			else {
+				driver.set(new EdgeDriver());
+			}
+		}
 		else if(browserName==Browser.IE) {
 			if(isHeadless) {
 				InternetExplorerOptions options=new InternetExplorerOptions();
-				options.addCommandSwitches("--headless");
+				options.addCommandSwitches("--headless");//headless
 				driver.set(new InternetExplorerDriver(options));
-			}else {
-			driver.set(new InternetExplorerDriver());
-		}}
-		else if(browserName==Browser.FIREFOX) {
-			if(isHeadless) {
-				FirefoxOptions options=new FirefoxOptions();
-				options.addArguments("--headless");
-				driver.set(new FirefoxDriver(options));
-			}else {
-			driver.set(new FirefoxDriver());
 			}
+		   else{
+			driver.set(new InternetExplorerDriver());
+		}
+		}
+		else if(browserName==Browser.FIREFOX) {		 
+			if(isHeadless) {
+				FirefoxOptions options=new FirefoxOptions ();
+				options.addArguments("--headless");//headless
+				driver.set(new FirefoxDriver(options));
+			}
+		else{
+			driver.set(new FirefoxDriver());
+			 }
 		}
 		
 	}

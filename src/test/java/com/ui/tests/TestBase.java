@@ -1,4 +1,4 @@
-package com.base;
+package com.ui.tests;
 
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -18,30 +18,34 @@ public class TestBase {
 	
 	protected HomePage homePage;
 	Logger logger=LoggerUtility.getLogger(this.getClass());
+	
 	private boolean isLambdaTest;
 	
-
 	
 	@Parameters({"browser","isLambdaTest","isHeadless"})
 	@BeforeMethod(description="load the homepage of the website")
-	public void setUp(@Optional("chrome")String browser,
+	public void setup(
+			@Optional("chrome") String browser,
 			@Optional("false") boolean isLambdaTest,
-			@Optional("true") boolean isHeadless, ITestResult result) {
-		
+			@Optional("true") boolean isHeadless,ITestResult result) {
 		this.isLambdaTest=isLambdaTest;
 		WebDriver lambdaDriver;
-		if(isLambdaTest)
-		{
-			lambdaDriver=LambdaTestUtility.initializeLambdaTestSession(browser, result.getMethod().getMethodName());
-		homePage=new HomePage(lambdaDriver);
-		}
-		else {
+		if(isLambdaTest) {
+			
+//			lambdaDriver=LambdaTestUtility.initializeLambdaTestSession("chrome",result.getMethod().getMethodName() );
+			lambdaDriver=LambdaTestUtility.initializeLambdaTestSession(browser,result.getMethod().getMethodName() );
+			homePage=new HomePage(lambdaDriver);
+		
+		}else {
 //			Running the test on local machine
 		logger.info("load the homepage of the website");
-		 homePage=new HomePage(Browser.valueOf( browser.toUpperCase()),isHeadless);
-//		 homePage=new HomePage(CHROME,isHeadless);
+		 homePage=new HomePage(Browser.valueOf(browser.toUpperCase()),isHeadless);
+//		 homePage=new HomePage(Browser.CHROME,isHeadless);
 		}
-	}
+		
+
+		}
+	
 	
 	public BrowserUtility getInstance() {  ///vvvvimp
 		return homePage;
@@ -49,13 +53,14 @@ public class TestBase {
 	
 	@AfterMethod(description="Tear down the browser")
 	public void tearDown() {
-		if(isLambdaTest)
-		{
-			LambdaTestUtility.quitSession();//quit/close browser session on LT	
+		
+		if(isLambdaTest) {
+			LambdaTestUtility.quitSession();  //quit/close the browser session on lambda test
 		}
 		else {
 		homePage.quit();//local
 		}
+	
 	}
 
 }

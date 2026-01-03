@@ -14,7 +14,7 @@ public class LoginTest2 {
 	WebDriver wdriver=new ChromeDriver();//Launch a Browser window!! Browser Session is created!!
 
 	
-	HomePage homePage=new HomePage(Browser.FIREFOX,true);
+	HomePage homePage=new HomePage(Browser.FIREFOX,false);
 //	homePage.goToWebsite("http://www.automationpractice.pl/index.php");
 	LoginPage loginPage=homePage.goToLoginPage();
 	loginPage.doLoginWith("migoti4686@mucate.com", "Gurijala123");

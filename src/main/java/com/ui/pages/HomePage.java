@@ -20,7 +20,7 @@ public final class HomePage extends BrowserUtility {
 
 	
 	public HomePage(Browser browserName,boolean isHeadless) {
-		super(browserName, isHeadless);// super key word job-  To call the parent class constructor from Child class constructor
+		super(browserName,isHeadless);// super key word job-  To call the parent class constructor from Child class constructor
    goToWebsite(readJson(QA).getUrl());
 		
 	}
