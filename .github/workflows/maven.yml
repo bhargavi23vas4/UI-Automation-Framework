@@ -49,6 +49,10 @@ jobs:
          name: html-report
          path: report.html
          
+    - name: Copy Report to gh-pages Folder
+      if: always()
+      run: echo "Test Execution Completed"   
+      
     - name: Test execution status
       if: always()
       run: |
@@ -56,10 +60,6 @@ jobs:
         cp -R report.html public/extent-reports/
         cp -R screenshots/public/extent-reports/screenshots/
         ls -l
-      
-    - name: Copy Report to gh-pages Folder
-      if: always()
-      run: echo "Test Execution Completed"
       
     - name: Deploy
       if: always()
