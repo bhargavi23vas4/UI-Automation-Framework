@@ -21,8 +21,7 @@ public class SearchProductTest extends TestBase {
 	}
 	
 	@Test(description="verify if the logged in user is able tosearch for a product and correct products are displayed", groups= {"e2e","sanity"} )
-	public void verifyProductSearchTest() {
-		
+	public void verifyProductSearchTest() {	
 	boolean actualResult=myAccountPage.searchForAProduct(SEARCH_TERM).isSearchTermPresentInProductList(SEARCH_TERM);
 	Assert.assertEquals(actualResult, true);
 	
