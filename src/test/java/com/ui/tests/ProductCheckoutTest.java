@@ -27,8 +27,7 @@ public class ProductCheckoutTest extends TestBase {
 				.proceedToCheckOut().goToConfirmAddressPage().goToShipmentPage().goToPaymentPage().makePaymentByWire();
 		System.out.println(actualtext);
 		Assert.assertEquals(actualtext,"Your order on My Shop is complete.");
-		
-		
+			
 		
 	}
 
